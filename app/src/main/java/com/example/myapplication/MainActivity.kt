@@ -195,16 +195,16 @@ fun Greeting(name: String, modifier: Modifier = Modifier, rx: Float, ry: Float) 
                     .padding(all = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("GyroQuiz", style = TextStyle(fontSize = 48.sp, fontWeight = FontWeight.Bold))
+                Text("GyroQuiz", style = TextStyle(fontSize = 48.sp, fontWeight = FontWeight.Bold,color = Color.Black))
                 Spacer(Modifier.height(80.dp))
-                Button(onClick = { firstPage = false }) { Text("Start") }
+                Button(onClick = { firstPage = false}) { Text("Start") }
             }
         } else if (finish) {
             Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("總分 ： $sc")
-                Text("正確率 ： ${(10 - wrong) / 10}")
+                Text("總分 ： $sc",color = Color.Black)
+                Text("正確率 ： ${((10 - wrong) / 10f*100).toInt()} %",color = Color.Black)
                 Spacer(Modifier.height(80.dp))
-                Button(onClick = { finish = false }) { Text("重新挑戰") }
+                Button(onClick = { finish = false;wrong=0;sc=0;qIdx=0;qqIdx =0  }) { Text("重新挑戰") }
             }
         } else {
             Column(
@@ -217,15 +217,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier, rx: Float, ry: Float) 
                         .fillMaxWidth()
                         .padding(all = 20.dp), horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("題目", style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold))
-                    Text(q.text, style = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Bold))
+                    Text("題目", style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold,color = Color.Black))
+                    Text(q.text, style = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Bold,color = Color.Black))
                     Text(
                         "分數 = $sc / 100",
-                        style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Bold,color = Color.Black)
                     )
                     Text(
                         "進度 = ${qqIdx + 1} / 10",
-                        style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Bold,color = Color.Black)
                     )
                 }
                 Column(
@@ -274,12 +274,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier, rx: Float, ry: Float) 
                     }
                 }
             }
-            Box(Modifier.fillMaxSize()) {
-                Button(
-                    onClick = { cp = Offset(w / 2, h / 2); cal = Offset(rx, ry) },
-                    Modifier.align(Alignment.TopEnd)
-                ) {
-                    Text("校正")
+            Column(Modifier.fillMaxSize()) {
+                Spacer(Modifier.height(20.dp))
+                Box(Modifier.fillMaxSize()) {
+                    Button(
+                        onClick = { cp = Offset(w / 2, h / 2); cal = Offset(rx, ry) },
+                        Modifier.align(Alignment.TopEnd)
+                    ) {
+                        Text("校正")
+                    }
                 }
             }
             Box(
@@ -338,7 +341,8 @@ fun AnsButton(x0: String, x1: Boolean, x2: Modifier) {
     ) {
         Text(
             text = x0,
-            fontSize = 48.sp
+            fontSize = 48.sp,
+            color = Color.Black
         )
     }
 }
