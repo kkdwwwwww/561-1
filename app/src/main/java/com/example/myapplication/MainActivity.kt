@@ -147,7 +147,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier, rx: Float, ry: Float) 
                     if (r3.contains(cp)) hover = 3 else
                         if (r4.contains(cp)) hover = 4
             if (hover > 0) {
-                pt += 0.02f
+                pt += 0.01f
                 if (pt >= 1f) {
                     val ct = hover == q.ans
                     if (ct) sc += 10
