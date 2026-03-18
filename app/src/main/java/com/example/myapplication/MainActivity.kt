@@ -96,8 +96,8 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         event?.let {
-            rx = rx * 0.9f + (-it.values[0]) * 0.1f
-            ry = ry * 0.9f + (it.values[1]) * 0.1f
+            rx = rx * 0.7f + (-it.values[0]) * 0.3f
+            ry = ry * 0.7f + (it.values[1]) * 0.3f
         }
     }
 }
